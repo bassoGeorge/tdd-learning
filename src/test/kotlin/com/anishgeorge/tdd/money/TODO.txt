@@ -1,0 +1,20 @@
+[ ] $5 + 10CHF = $10 if rate is 2:1
+[ ] $5 + $5 = $10
+
+[ ] Money rounding?
+[ ] equal null
+[ ] equal object
+
+
+--------------------------------------
+[x] hashCode()
+[x] $5 * 2 = $10
+[x] Make "amount" private
+[x] Dollar side effects?
+[x] equals()
+[x] 5 CHF * 2 = 10 CHF
+[x] Dollar/Franc duplication
+[x] Common equals()
+[x] Common times()
+[x] Compare francs with dollars
+[x] Delete francMultiplication test
