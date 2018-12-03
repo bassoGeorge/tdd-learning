@@ -15,7 +15,10 @@ data class Money(val amount: Int, protected val currency: String) : Expression {
 
     fun plus(other: Money): Expression = Sum(this, other)
 
-    override fun reduce(to: String): Money = this
+    override fun reduce(bank: Bank, to: String): Money {
+        val rate = bank.rate(currency, to)
+        return Money(amount / rate, to)
+    }
 
     companion object {
         fun dollar(amount: Int): Money = Money(amount, "USD")

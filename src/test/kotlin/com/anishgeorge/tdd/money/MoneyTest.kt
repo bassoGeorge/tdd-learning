@@ -51,4 +51,15 @@ internal class MoneyTest {
         val result = bank.reduce(Money.dollar(5), "USD")
         assertEquals(Money.dollar(5), result)
     }
+
+    @Test fun shouldGetBankReduceOnDifferentCurrency() {
+        val bank = Bank()
+        bank.addRate("CHF", "USD", 2)
+        val result = bank.reduce(Money.franc(2), "USD")
+        assertEquals(Money.dollar(1), result)
+    }
+
+    @Test fun identityRate() {
+        assertEquals(1, Bank().rate("USD", "USD"))
+    }
 }
