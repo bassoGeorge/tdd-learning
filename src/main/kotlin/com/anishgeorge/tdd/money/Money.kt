@@ -10,7 +10,7 @@ data class Money(val amount: Int, protected val currency: String) : Expression {
 
     override fun toString(): String = "$amount $currency"
 
-    fun times(multiplier: Int): Expression = Money(amount * multiplier, currency)
+    override fun times(multiplier: Int): Expression = Money(amount * multiplier, currency)
     fun currency() = currency
 
     override fun plus(addend: Expression): Expression = Sum(this, addend)

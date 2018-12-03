@@ -6,7 +6,6 @@ data class Sum(val augend: Expression, val addend: Expression): Expression {
         return Money(amount, to)
     }
 
-    override fun plus(addend: Expression): Expression {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+    override fun plus(addend: Expression): Expression = Sum(this, addend)
+    override fun times(multiplier: Int): Expression = Sum(augend.times(multiplier), addend.times(multiplier))
 }

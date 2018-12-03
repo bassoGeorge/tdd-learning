@@ -1,6 +1,7 @@
 package com.anishgeorge.tdd.money
 
 import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 
 internal class MoneyTest {
@@ -71,4 +72,30 @@ internal class MoneyTest {
         assertEquals(Money.dollar(10), bank.reduce(fiveBucks.plus(tenFrancs), "USD"))
     }
 
+    @Test fun sumPlusMoney() {
+        val fiveBucks = Money.dollar(5)
+        val tenFrancs = Money.franc(10)
+        val bank = Bank()
+        bank.addRate("CHF", "USD", 2)
+        val sum = Sum(fiveBucks, tenFrancs).plus(fiveBucks)
+        val result = bank.reduce(sum, "USD")
+        assertEquals(Money.dollar(15), result)
+    }
+
+    @Test fun sumTimesMoney() {
+        val fiveBucks = Money.dollar(5)
+        val tenFrancs = Money.franc(10)
+        val bank = Bank()
+        bank.addRate("CHF", "USD", 2)
+        val sum = Sum(fiveBucks, tenFrancs).times(2)
+        val result = bank.reduce(sum, "USD")
+        assertEquals(Money.dollar(20), result)
+    }
+
+    @Disabled
+    @Test
+    fun plusSameCurrencyReturnsMoney() {
+        val sum = Money.dollar(1).plus(Money.dollar(1));
+        assertTrue(sum is Money)
+    }
 }
