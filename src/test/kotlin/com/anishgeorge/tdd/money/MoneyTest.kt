@@ -62,4 +62,13 @@ internal class MoneyTest {
     @Test fun identityRate() {
         assertEquals(1, Bank().rate("USD", "USD"))
     }
+
+    @Test fun mixedCurrencyAddition() {
+        val fiveBucks = Money.dollar(5)
+        val tenFrancs = Money.franc(10)
+        val bank = Bank()
+        bank.addRate("CHF", "USD", 2)
+        assertEquals(Money.dollar(10), bank.reduce(fiveBucks.plus(tenFrancs), "USD"))
+    }
+
 }

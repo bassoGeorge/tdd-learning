@@ -4,6 +4,8 @@
 [x] Bank.reduce(Money)
 [x] Reduce money with conversion
 [x] Expression.reduce(Bank, String)
+[ ] Sum.plus()
+[ ] Expression.times()
 
 [ ] Money rounding?
 [ ] equal null
