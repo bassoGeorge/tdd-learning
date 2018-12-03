@@ -1,3 +1,5 @@
 package com.anishgeorge.tdd.money
 
-interface Expression
+interface Expression {
+    fun reduce(to: String): Money
+}

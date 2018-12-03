@@ -30,4 +30,25 @@ internal class MoneyTest {
         val reduced = bank.reduce(sum, "USD")
         assertEquals(Money.dollar(10), reduced)
     }
+
+    @Test fun shouldImplementBasicAdditionReturningASum() {
+        val five = Money.dollar(5)
+        val result: Expression = five.plus(five)
+        val sum = result as Sum
+        assertEquals(five, sum.augend)
+        assertEquals(five, sum.addend)
+    }
+
+    @Test fun shouldCorrectlyGetReduceImplementationByBank() {
+        val sum = Money.dollar(4).plus(Money.dollar(3))
+        val bank = Bank()
+        val result = bank.reduce(sum, "USD")
+        assertEquals(Money.dollar(7), result)
+    }
+
+    @Test fun shouldGetBankReduceOnMoney() {
+        val bank = Bank()
+        val result = bank.reduce(Money.dollar(5), "USD")
+        assertEquals(Money.dollar(5), result)
+    }
 }
